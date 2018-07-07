@@ -1,26 +1,12 @@
-import { createServer } from 'http';
-import { parse } from 'url';
-import * as next from 'next';
+import dotenv from 'dotenv';
+import mongoose from 'mongoose';
+import { setupServer } from './server';
+
+dotenv.config();
+mongoose.connect(process.env.DB_URL);
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
-const app = next({ dir: './app/client', dev });
-const handle = app.getRequestHandler();
+const clientPath = './app/client';
 
-app.prepare().then(() => {
-  createServer((req, res) => {
-    const parsedUrl = parse(req.url, true);
-    const { pathname, query } = parsedUrl;
-
-    if (pathname === '/a') {
-      app.render(req, res, '/a', query);
-    } else if (pathname === '/b') {
-      app.render(req, res, '/b', query);
-    } else {
-      handle(req, res, parsedUrl);
-    }
-  }).listen(port, err => {
-    if (err) throw err;
-    console.log(`> Ready on http://localhost:${port}`);
-  });
-});
+setupServer({ clientPath, dev, port });
