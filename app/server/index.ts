@@ -1,5 +1,5 @@
-import dotenv from 'dotenv';
-import mongoose from 'mongoose';
+import * as dotenv from 'dotenv';
+import * as mongoose from 'mongoose';
 import { setupServer } from './server';
 
 dotenv.config();

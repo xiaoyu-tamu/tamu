@@ -1,20 +1,26 @@
 {
   "scripts": {
     "dev": "nodemon app/server/index.ts",
-    "build": "next build app/client && tsc --p app/tsconfig.server.json",
+    "build": "next build app/client && tsc --p tsconfig.server.json",
     "start": "NODE_ENV=production node app/.next/index.js",
     "test": "npm run test:client && npm run test:server",
     "test:server": "jest -c=\"configs/jest.config.server.js\" --forceExit",
     "test:client": "jest -c=\"configs/jest.config.client.js\""
   },
   "dependencies": {
+    "@material-ui/core": "^1.3.1",
+    "axios": "^0.18.0",
+    "babel-plugin-module-resolver": "^3.1.1",
+    "body-parser": "^1.18.3",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
+    "hoist-non-react-statics": "^2.5.5",
     "mongoose": "^5.2.1",
     "next": "6.1.1",
     "react": "16.4.1",
     "react-addons-test-utils": "^15.6.2",
     "react-dom": "16.4.1",
+    "recharts": "^1.0.1",
     "reflect-metadata": "^0.1.12",
     "typegoose": "^5.2.1"
   },
@@ -31,9 +37,7 @@
     "@types/react": "^16.0.36",
     "@types/typescript": "^2.0.0",
     "@zeit/next-typescript": "1.1.0",
-    "babel-jest": "^23.2.0",
     "babel-loader": "^7.1.4",
-    "babel-plugin-transform-decorators-legacy": "^1.3.5",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme": "^3.3.0",
     "jest": "^23.3.0",

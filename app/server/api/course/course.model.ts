@@ -1,8 +1,12 @@
 import { prop, arrayProp, Typegoose, ModelType, pre, Ref } from 'typegoose';
 import { ObjectID } from 'bson';
-import { Degree } from 'shared/types';
 import { DepartmentSchema } from '../department/department.model';
 export type CourseModelType = ModelType<CourseSchema>;
+
+export enum Degree {
+  Graduate = 'graduate',
+  Undergraduate = 'undergraduate',
+}
 
 @pre<CourseSchema>('update', function(next) {
   this.update(null, { updateAt: Date.now() });

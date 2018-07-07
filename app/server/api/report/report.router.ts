@@ -1,4 +1,4 @@
-import express from 'express';
+import * as express from 'express';
 import reportController from './report.controller';
 
 const reportRouter = express.Router();
