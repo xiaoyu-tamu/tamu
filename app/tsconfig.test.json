@@ -1,4 +1,5 @@
 {
+  // ts-jest lookup start from root path
   "extends": "./app/tsconfig.json",
   "compilerOptions": {
     "module": "commonjs",
