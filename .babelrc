@@ -13,5 +13,13 @@
       ],
       "plugins": [["@babel/plugin-proposal-decorators", { "legacy": true }]]
     }
-  }
+  },
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["./app"]
+      }
+    ]
+  ]
 }

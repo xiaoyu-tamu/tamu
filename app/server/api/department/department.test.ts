@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import * as mongoose from 'mongoose';
 import DepartmentModel from './department.model';
 import { generateApiTests } from '../../test/helper/generateApiTest';
 

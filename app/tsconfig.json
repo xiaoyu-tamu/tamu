@@ -1,14 +1,12 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./app",
+    "baseUrl": "./",
     "target": "esnext",
     "module": "esnext",
     "jsx": "preserve",
     "allowJs": true,
     "moduleResolution": "node",
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
     "noUnusedLocals": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
