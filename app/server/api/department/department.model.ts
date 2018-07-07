@@ -6,7 +6,7 @@ export type DepartmentModelType = ModelType<DepartmentSchema>;
   this.update(null, { updateAt: Date.now() });
   next();
 })
-class DepartmentSchema extends Typegoose {
+export class DepartmentSchema extends Typegoose {
   @prop({ default: Date.now() })
   createAt: Date;
 

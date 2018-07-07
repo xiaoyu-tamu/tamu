@@ -6,7 +6,7 @@ export type CollegeModelType = ModelType<CollegeSchema>;
   this.update(null, { updateAt: Date.now() });
   next();
 })
-class CollegeSchema extends Typegoose {
+export class CollegeSchema extends Typegoose {
   @prop({ default: Date.now() })
   createAt: Date;
 
