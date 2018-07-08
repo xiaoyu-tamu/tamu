@@ -8,6 +8,7 @@
     "allowJs": true,
     "moduleResolution": "node",
     "noUnusedLocals": true,
+    "noImplicitAny": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "noUnusedParameters": true,

@@ -25,7 +25,7 @@ export const setupServer = async ({ clientPath, dev, port }: ServerConfig) => {
   });
 
   // start server
-  server.listen(port, err => {
+  server.listen(port, (err: Error) => {
     if (err) throw err;
     console.log(`Server is running on http://localhost:${port}`);
   });

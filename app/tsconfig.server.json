@@ -4,5 +4,6 @@
     "module": "commonjs",
     "outDir": "server/.next"
   },
-  "include": ["server/**/*.ts", "types"]
+  "include": ["server/**/*.ts", "types"],
+  "exclude": ["./**/*.spec.*", "./**/*.test.*"]
 }

@@ -1,10 +1,10 @@
 const fake = {
   createAt: '2018-07-07T09:03:33.572Z',
   updateAt: '2018-07-07T09:03:33.572Z',
-  crosslist: [],
+  crosslist: [] as string[],
   credits: ['3'],
   lecture: ['3'],
-  labs: [],
+  labs: [] as number[],
   _id: 'wfsc433',
   course: '433',
   subject: 'WFSC',

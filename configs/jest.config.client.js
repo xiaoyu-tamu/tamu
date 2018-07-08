@@ -7,7 +7,7 @@ module.exports = {
   setupFiles: ['<rootDir>/configs/jest.setup.client.js'],
 
   testPathIgnorePatterns: [
-    '<rootDir>/app/.next/',
+    '<rootDir>/app/client/.next/',
     '<rootDir>/app/server/',
     '<rootDir>/node_modules/',
   ],

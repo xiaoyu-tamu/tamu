@@ -13,6 +13,7 @@ class Controller<T extends Model<any>> {
 
   public updateOne: RequestHandler = (req, res, next) => {
     const docToUpdate = req.docFromId;
+
     const changes = req.body;
 
     /// data mutation ///
