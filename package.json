@@ -2,7 +2,7 @@
   "scripts": {
     "dev": "nodemon app/server/index.ts",
     "build": "next build app/client && tsc --p app/tsconfig.server.json",
-    "start": "NODE_ENV=production node app/.next/index.js",
+    "start": "NODE_ENV=production node app/server/.next/index.js",
     "test": "npm run test:client && npm run test:server",
     "test:server": "jest -c=\"configs/jest.config.server.js\" --forceExit",
     "test:client": "jest -c=\"configs/jest.config.client.js\""
