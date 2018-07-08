@@ -1,8 +1,8 @@
 {
-  "extends": "./app/tsconfig.json",
+  "extends": "./tsconfig.json",
   "compilerOptions": {
     "module": "commonjs",
-    "outDir": ".next"
+    "outDir": "server/.next"
   },
-  "include": ["server/**/*.ts"]
+  "include": ["server/**/*.ts", "types"]
 }

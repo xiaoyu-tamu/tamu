@@ -10,6 +10,7 @@ module.exports = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   globals: {
     'ts-jest': {
+      // ts-jest lookup start from root path
       tsConfigFile: './app/tsconfig.test.json',
     },
   },

@@ -1,1 +1,7 @@
-{}
+{
+  "name": "tamu",
+  "alias": "tamu.now.sh",
+  "env": {
+    "DB_URL": "@tamu-dev-db-url"
+  }
+}

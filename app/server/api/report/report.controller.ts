@@ -1,7 +1,6 @@
 import Controller from '../_private/controller.base';
-import ReportModel from './report.model';
-import { Report } from 'shared/types';
+import ReportModel, { ReportModelType } from './report.model';
 
-class ReportController extends Controller<Report> {}
+class ReportController extends Controller<ReportModelType> {}
 
 export default new ReportController(ReportModel);
