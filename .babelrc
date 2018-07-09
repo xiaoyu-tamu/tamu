@@ -12,13 +12,5 @@
         "@zeit/next-typescript/babel"
       ]
     }
-  },
-  "plugins": [
-    [
-      "module-resolver",
-      {
-        "root": ["./app"]
-      }
-    ]
-  ]
+  }
 }

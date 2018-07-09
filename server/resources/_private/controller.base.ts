@@ -2,6 +2,7 @@ import { Model } from 'mongoose';
 import { merge } from 'lodash';
 import { RequestHandler, RequestParamHandler } from 'express';
 
+import '../../services/express';
 class Controller<T extends Model<any>> {
   constructor(private model: T) {}
 

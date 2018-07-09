@@ -6,12 +6,13 @@ import JssProvider from 'react-jss/lib/JssProvider';
 import getPageContext from '../services/material-ui/pageContext';
 
 class MyApp extends App {
+  private pageContext: any = null;
+
   constructor(props: AppComponentProps) {
     super(props);
     this.pageContext = getPageContext();
   }
 
-  private pageContext: any = null;
   componentDidMount() {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');

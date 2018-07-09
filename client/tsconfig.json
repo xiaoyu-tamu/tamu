@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "jsx": "preserve"
+  },
+  "include": ["./**/*", "../shared"],
+  "exclude": ["./**/*.spec.*", "./**/*.test.*"],
+  "extends": "../tsconfig.json"
+}
