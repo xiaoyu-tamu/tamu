@@ -15,6 +15,9 @@ export default function server({ port, restHandler, dev }: ServerConfig) {
 
   return class Server {
     static prepare() {
+      if (!process.env.DB_URL) {
+        throw new Error('cannot find enviroment variable DB_URL');
+      }
       mongoose.connect(
         process.env.DB_URL,
         { useNewUrlParser: true }

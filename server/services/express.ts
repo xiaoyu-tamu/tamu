@@ -3,7 +3,8 @@ import { Document } from 'mongoose';
 declare global {
   namespace Express {
     interface Request {
-      docFromId?: Document;
+      // The middleware will throw an Error if undefined
+      docFromId: Document;
     }
   }
 }
