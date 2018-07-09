@@ -4,6 +4,7 @@ import { MuiThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import JssProvider from 'react-jss/lib/JssProvider';
 import getPageContext from '../services/material-ui/pageContext';
+import { Layout } from '../containers/Layout';
 
 class MyApp extends App {
   private pageContext: any = null;
@@ -34,7 +35,9 @@ class MyApp extends App {
             sheetsManager={this.pageContext.sheetsManager}
           >
             <CssBaseline />
-            <Component pageContext={this.pageContext} {...pageProps} />
+            <Layout>
+              <Component pageContext={this.pageContext} {...pageProps} />
+            </Layout>
           </MuiThemeProvider>
         </JssProvider>
       </Container>

@@ -11,14 +11,29 @@ declare module '@material-ui/core/styles/createMuiTheme' {
 
 declare module '@material-ui/core/styles/spacing' {
   export interface Spacing {
+    negativeIconButton: number | string;
     sider: number;
   }
 }
 
 export const theme = createMuiTheme({
   palette: {
+    primary: {
+      main: '#500000',
+    },
+
     background: {
-      default: '#fff',
+      default: '#edeff1',
+    },
+  },
+  spacing: {
+    sider: 256,
+
+    negativeIconButton: '-14px',
+  },
+  mixins: {
+    toolbar: {
+      minHeight: 48,
     },
   },
 });

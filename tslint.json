@@ -13,6 +13,8 @@
     "newline-before-return": false,
     "no-any": false,
     "no-console": false,
+    "object-literal-key-quotes": false,
+    "no-empty": false,
     "no-empty-interface": false,
     "no-inferrable-types": [true, "ignore-params", "ignore-properties"],
     "no-null-keyword": false,
@@ -52,6 +54,8 @@
       "allow-leading-underscore"
     ],
     // tslint-react
-    "jsx-no-lambda": false
+    "jsx-no-lambda": false,
+    "jsx-boolean-value": false,
+    "jsx-no-multiline-js": false
   }
 }

@@ -1,7 +1,7 @@
 import { SheetsRegistry } from 'jss';
 import { createGenerateClassName } from '@material-ui/core';
-import { isServer } from '../utils/isBrowser';
 import { theme } from './theme';
+import { isServer } from '../utils/helper';
 
 function createPageContext() {
   return {
