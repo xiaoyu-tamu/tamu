@@ -1,105 +1,96 @@
-import { prop, arrayProp, Typegoose, ModelType, pre, Ref } from 'typegoose';
-import { ObjectID } from 'bson';
-import { DepartmentSchema } from '../department/department.model';
-export type CourseModelType = ModelType<CourseSchema>;
+import * as mongoose from 'mongoose';
+import { Course } from '../../../shared/types/models';
 
-export enum Degree {
-  Graduate = 'graduate',
-  Undergraduate = 'undergraduate',
-}
+/**
+ * Course Schema
+ *
+ * 🚨 Make sure update corresponding data definition in shared/ folder.
+ * 📋 Fields with default values should be cast in data definition.
+ */
 
-@pre<CourseSchema>('update', function(next) {
+const courseSchema = new mongoose.Schema({
+  /*==================================
+    Required
+   ==================================*/
+
+  name: {
+    type: String,
+    required: [true, 'Course name is required'],
+  },
+
+  courseCode: {
+    type: String,
+    required: [true, 'Course code is required'],
+  },
+
+  degree: {
+    type: String,
+    enum: ['graduate', 'undergraduate'],
+    required: [true, 'Course degree is required'],
+  },
+
+  /*==================================
+    Optional
+   ==================================*/
+
+  alias: String,
+
+  prerequisite: String,
+
+  description: String,
+
+  report: mongoose.Schema.Types.ObjectId,
+
+  department: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Department',
+  },
+
+  /*==================================
+     With default
+   ==================================*/
+  invalid: {
+    type: Boolean,
+    default: false,
+  },
+
+  crosslist: {
+    type: [String],
+    default: [],
+  },
+
+  lecture: {
+    type: [String],
+    default: [],
+  },
+
+  credits: {
+    type: [String],
+    default: [],
+  },
+
+  labs: {
+    type: [String],
+    default: [],
+  },
+
+  createAt: {
+    type: Date,
+    default: Date.now(),
+  },
+
+  updateAt: {
+    type: Date,
+    default: Date.now(),
+  },
+});
+
+courseSchema.pre('update', function() {
   this.update(null, { updateAt: Date.now() });
-  next();
-})
-export class CourseSchema extends Typegoose {
-  /**
-   * A flag indicates data integrity.
-   * The data is crawl from Texas A&M course listing website,
-   * some of the course is not valid.
-   */
-  @prop({ default: false })
-  invalid: boolean;
+});
 
-  /**
-   * A name of the course
-   */
-  @prop({ required: true })
-  name: string;
+type CourseModelType = Course & mongoose.Document;
 
-  /**
-   * An alias for the item.
-   */
-  @prop() alias?: string;
+const CourseModel = mongoose.model<CourseModelType>('Course', courseSchema);
 
-  /**
-   * The course degree identifier
-   */
-  @prop({ required: true })
-  degree: Degree;
-
-  /**
-   * A description of the course
-   */
-  @prop() description?: string;
-
-  /**
-   * Requirements for taking the Course
-   */
-  @prop() prerequisite?: string;
-
-  /**
-   * The identifier for the Course used by the course provider, e.g. CSCE121
-   */
-  @prop({ required: true })
-  courseCode: string;
-
-  /**
-   * The date on which the course was created.
-   */
-  @prop({ default: Date.now() })
-  createAt: Date;
-
-  /**
-   * The date on which the course was updated.
-   */
-  @prop({ default: Date.now() })
-  updateAt: Date;
-
-  /**
-   * The equivalent courses
-   */
-  @arrayProp({ items: String, default: [] })
-  crosslist: string[];
-
-  /**
-   * The range of course lecture hours
-   */
-  @arrayProp({ items: Number, default: [] })
-  lecture: number[];
-
-  /**
-   * The range of course credits
-   */
-  @arrayProp({ items: Number, default: [] })
-  credits: number[];
-
-  /**
-   * The range of course lab hours
-   */
-  @arrayProp({ items: Number, default: [] })
-  labs: number[];
-
-  /**
-   * A reference to the associate department.
-   */
-  @prop({ ref: DepartmentSchema, required: true })
-  department: Ref<DepartmentSchema>;
-
-  /**
-   * A reference to the associate report.
-   */
-  @prop() report?: ObjectID;
-}
-
-export default new CourseSchema().getModelForClass(CourseSchema);
+export default CourseModel;

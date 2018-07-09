@@ -1,5 +1,7 @@
 import * as next from 'next';
 import server from './server';
+// register req.docFromId in Express.Request type definition
+import './services/express';
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';

@@ -1,17 +1,24 @@
-import { prop, Typegoose, ModelType, pre } from 'typegoose';
+import * as mongoose from 'mongoose';
+import { College } from '../../../shared/types/models';
 
-export type CollegeModelType = ModelType<CollegeSchema>;
+const collegeSchema = new mongoose.Schema({
+  createAt: {
+    type: Date,
+    default: Date.now(),
+  },
 
-@pre<CollegeSchema>('update', function(next) {
+  updateAt: {
+    type: Date,
+    default: Date.now(),
+  },
+});
+
+collegeSchema.pre('update', function() {
   this.update(null, { updateAt: Date.now() });
-  next();
-})
-export class CollegeSchema extends Typegoose {
-  @prop({ default: Date.now() })
-  createAt: Date;
+});
 
-  @prop({ default: Date.now() })
-  updateAt: Date;
-}
+type CollegeModelType = College & mongoose.Document;
 
-export default new CollegeSchema().getModelForClass(CollegeSchema);
+const CollegeModel = mongoose.model<CollegeModelType>('College', collegeSchema);
+
+export default CollegeModel;

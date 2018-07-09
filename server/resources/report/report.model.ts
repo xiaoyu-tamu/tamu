@@ -1,17 +1,24 @@
-import { prop, Typegoose, ModelType, pre } from 'typegoose';
+import * as mongoose from 'mongoose';
+import { Report } from '../../../shared/types/models';
 
-export type ReportModelType = ModelType<ReportSchema>;
+const reportSchema = new mongoose.Schema({
+  createAt: {
+    type: Date,
+    default: Date.now(),
+  },
 
-@pre<ReportSchema>('update', function(next) {
+  updateAt: {
+    type: Date,
+    default: Date.now(),
+  },
+});
+
+reportSchema.pre('update', function() {
   this.update(null, { updateAt: Date.now() });
-  next();
-})
-export class ReportSchema extends Typegoose {
-  @prop({ default: Date.now() })
-  createAt: Date;
+});
 
-  @prop({ default: Date.now() })
-  updateAt: Date;
-}
+type ReportModelType = Report & mongoose.Document;
 
-export default new ReportSchema().getModelForClass(ReportSchema);
+const ReportModel = mongoose.model<ReportModelType>('Report', reportSchema);
+
+export default ReportModel;

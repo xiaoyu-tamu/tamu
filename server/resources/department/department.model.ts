@@ -1,17 +1,24 @@
-import { prop, Typegoose, ModelType, pre } from 'typegoose';
+import * as mongoose from 'mongoose';
+import { Department } from '../../../shared/types/models';
 
-export type DepartmentModelType = ModelType<DepartmentSchema>;
+const departmentSchema = new mongoose.Schema({
+  createAt: {
+    type: Date,
+    default: Date.now(),
+  },
 
-@pre<DepartmentSchema>('update', function(next) {
+  updateAt: {
+    type: Date,
+    default: Date.now(),
+  },
+});
+
+departmentSchema.pre('update', function() {
   this.update(null, { updateAt: Date.now() });
-  next();
-})
-export class DepartmentSchema extends Typegoose {
-  @prop({ default: Date.now() })
-  createAt: Date;
+});
 
-  @prop({ default: Date.now() })
-  updateAt: Date;
-}
+type DepartmentModelType = Department & mongoose.Document;
 
-export default new DepartmentSchema().getModelForClass(DepartmentSchema);
+const DepartmentModel = mongoose.model<DepartmentModelType>('Department', departmentSchema);
+
+export default DepartmentModel;

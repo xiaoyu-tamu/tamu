@@ -1,6 +1,6 @@
 import Controller from '../_private/controller.base';
-import CollegeModel, { CollegeModelType } from './college.model';
+import CollegeModel from './college.model';
 
-class CollegeController extends Controller<CollegeModelType> {}
+class CollegeController extends Controller<typeof CollegeModel> {}
 
 export default new CollegeController(CollegeModel);
