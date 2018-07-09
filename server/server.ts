@@ -37,7 +37,7 @@ export default function server({ port, restHandler, dev }: ServerConfig) {
 
     private static applyRoutes() {
       app.use('/api', apiRouter);
-      app.use('*', restHandler);
+      app.get('*', restHandler);
     }
 
     /**
