@@ -2,34 +2,37 @@ import * as React from 'react';
 import { Card, Typography, CardContent } from '@material-ui/core';
 import * as classnames from 'classnames';
 import { StandardProps } from 'types';
-import { decorate, Styles } from './PageEmpty.styles';
+import { decorate, Classes } from './PageEmpty.styles';
+import { getProps } from '../../services/utils/react';
+import Link from '../Link/Link';
 
 interface Image {
   src: string;
   alt: string;
 }
-export interface Props extends StandardProps {
+export interface Props extends StandardProps<DP> {
   show?: boolean;
   description: string;
   link?: string;
   linkText?: string;
-  image: Image;
 }
 
-type P = Readonly<Props> & Styles;
+const defaultProps = {
+  image: {
+    src: 'static/images/empty-state.png',
+  } as Image,
+};
+
+type P = Readonly<Props> & Classes;
+type DP = Readonly<typeof defaultProps>;
 
 // --------------------------------------------------
 
-export const PageEmpty: React.SFC<P> = ({
-  classes,
-  className,
-  children,
-  show,
-  description,
-  link,
-  linkText,
-  image,
-}) => {
+export const PageEmpty: React.SFC<P> = (props) => {
+  const { classes, className, children, show, description, link, linkText, image } = getProps(
+    props,
+    defaultProps
+  );
   const root = classnames(classes.root, className);
 
   return show ? (
@@ -40,12 +43,12 @@ export const PageEmpty: React.SFC<P> = ({
             <div className={classes.image}>
               <img src={image.src} alt={image.alt} />
             </div>
-            <Typography variant="subheading" gutterBottom>
+            <Typography variant="subheading" gutterBottom className={classes.description}>
               {description}
             </Typography>
-            <a href={link}>
+            <Link href={link || '/test'}>
               <Typography color="primary">{linkText}</Typography>
-            </a>
+            </Link>
             <div className={classes.extra}>{children}</div>
           </div>
         </CardContent>

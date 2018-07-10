@@ -5,7 +5,6 @@ export const styles = ({ palette, spacing }: Theme) =>
     root: {
       background: palette.primary.main,
       color: '#fff',
-      flex: '0 0 56px',
       justifyContent: 'space-between',
     },
 
@@ -17,4 +16,4 @@ export const styles = ({ palette, spacing }: Theme) =>
   });
 
 export const decorate = withStyles(styles);
-export type Styles = WithStyles<typeof styles>;
+export type Classes = WithStyles<typeof styles>;

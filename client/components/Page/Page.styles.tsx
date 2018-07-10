@@ -5,11 +5,12 @@ export const styles = ({  }: Theme) =>
     root: {
       flex: 1,
       paddingTop: 48,
-      minHeight: '100vh',
       display: 'flex',
       flexDirection: 'column',
+      overflow: 'auto',
+      height: '100%',
     },
   });
 
 export const decorate = withStyles(styles);
-export type Styles = WithStyles<typeof styles>;
+export type Classes = WithStyles<typeof styles>;

@@ -2,14 +2,14 @@ import * as React from 'react';
 import { IconButton, Icon, Typography, Toolbar } from '@material-ui/core';
 import * as classnames from 'classnames';
 import { StandardProps } from 'types';
-import { decorate, Styles } from './PageHeader.styles';
+import { decorate, Classes } from './PageHeader.styles';
 
 export interface Props extends StandardProps {
   title: string;
   actions?: React.ReactElement<any>;
 }
 
-type P = Readonly<Props> & Styles;
+type P = Readonly<Props> & Classes;
 
 // --------------------------------------------------
 

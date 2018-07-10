@@ -5,9 +5,12 @@ import { StandardProps } from 'types';
 import autobind from 'autobind-decorator';
 import { Header } from '../../components/Header';
 import { Sider } from '../../components/Sider';
+import { pages } from '../../services/pages';
+import { Navigation } from '../../components/Navigation';
+import { Classes, decorate } from './Layout.styles';
 export interface Props extends StandardProps {}
 
-type P = Readonly<Props>;
+type P = Readonly<Props> & Classes;
 type S = Readonly<typeof initialState>;
 
 const initialState = {
@@ -24,17 +27,22 @@ class Layout extends React.Component<P, S> {
     this.setState((prevState) => ({ isDrawerOpen: !prevState.isDrawerOpen }));
   }
 
+  findActivePage() {
+    return pages[0];
+  }
   render() {
-    const { children } = this.props;
+    const { children, classes } = this.props;
     const { isDrawerOpen } = this.state;
     return (
-      <div style={{ display: 'flex' }}>
+      <div className={classes.root}>
         <Header toggleDrawer={this.onDrawerToggle} />
-        <Sider isOpen={isDrawerOpen} onToggle={this.onDrawerToggle} />
+        <Sider isOpen={isDrawerOpen} onToggle={this.onDrawerToggle}>
+          <Navigation pages={pages} activePage={this.findActivePage()} />
+        </Sider>
         {children}
       </div>
     );
   }
 }
 
-export default Layout;
+export default decorate(Layout);

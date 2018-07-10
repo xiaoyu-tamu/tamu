@@ -6,4 +6,4 @@ export const styles = ({  }: Theme) =>
   });
 
 export const decorate = withStyles(styles);
-export type Styles = WithStyles<typeof styles>;
+export type Classes = WithStyles<typeof styles>;

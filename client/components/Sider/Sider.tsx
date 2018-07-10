@@ -8,6 +8,7 @@ import {
   Button,
   IconButton,
   Icon,
+  AppBar,
 } from '@material-ui/core';
 
 import { StandardProps } from 'types';
@@ -30,7 +31,7 @@ class Sider extends React.Component<P, S> {
   readonly state: S = initialState;
 
   render() {
-    const { classes, isOpen, onToggle } = this.props;
+    const { classes, children, isOpen, onToggle } = this.props;
 
     const content = (
       <>
@@ -40,15 +41,7 @@ class Sider extends React.Component<P, S> {
             Aggies Portal
           </Typography>
         </Toolbar>
-        <div className={classes.dashboard}>
-          <Button size="large" fullWidth disableRipple>
-            <Icon className={classes.leftIcon}>dashboard</Icon>
-            Dashboard
-          </Button>
-          <IconButton>
-            <Icon>settings</Icon>
-          </IconButton>
-        </div>
+        {children}
       </>
     );
     return (
@@ -66,8 +59,13 @@ class Sider extends React.Component<P, S> {
             {content}
           </SwipeableDrawer>
         </Hidden>
-        <Hidden mdDown implementation="css">
-          <Drawer variant="permanent" open classes={{ paper: classes.permanentPaper }}>
+        <Hidden smDown implementation="css">
+          <Drawer
+            PaperProps={{ elevation: 10 }}
+            variant="permanent"
+            open
+            classes={{ paper: classes.permanentPaper }}
+          >
             {content}
           </Drawer>
         </Hidden>

@@ -4,6 +4,5 @@
     "module": "esnext",
     "jsx": "preserve"
   },
-  "include": ["./**/*", "../shared"],
-  "exclude": ["./**/*.spec.*", "./**/*.test.*"]
+  "include": ["./**/*", "../shared"]
 }
