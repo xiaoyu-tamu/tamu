@@ -1,9 +1,9 @@
-import * as mongoose from 'mongoose';
+import mongoose from 'mongoose';
 import CourseModel from './course.model';
-import { generateApiTests } from '../../test/helper/generateApiTest';
+import { generateApiTests } from '../../services/test/generateApiTest';
 
 beforeAll(async () => {
-  await mongoose.connect(process.env.DB_URL);
+  await mongoose.connect(process.env.DB_URL!);
 });
 
 afterAll(async () => {

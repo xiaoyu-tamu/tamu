@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import App, { Container, AppComponentProps } from 'next/app';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import JssProvider from 'react-jss/lib/JssProvider';

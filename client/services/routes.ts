@@ -1,10 +1,10 @@
-export interface Page {
+export interface Route {
   title?: string;
   pathname: string;
-  children?: Page[];
+  children?: Route[];
 }
 
-export const pages: Page[] = [
+export const routes: Route[] = [
   {
     pathname: '/dashboard',
   },

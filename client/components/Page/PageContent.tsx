@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { AppBar, Tabs, Tab, Toolbar } from '@material-ui/core';
 import { StandardProps } from 'types';
 import { decorate, Classes } from './PageContent.styles';

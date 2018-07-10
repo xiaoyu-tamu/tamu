@@ -1,5 +1,5 @@
-import * as React from 'react';
-import * as classNames from 'classnames';
+import React from 'react';
+import classNames from 'classnames';
 import { ListItem, Button, Collapse } from '@material-ui/core';
 import { StandardProps } from 'types';
 import { decorate, Classes } from './NavigationItem.styles';

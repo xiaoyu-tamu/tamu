@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import { IconButton, Icon, Typography, Toolbar } from '@material-ui/core';
-import * as classnames from 'classnames';
+import classnames from 'classnames';
 import { StandardProps } from 'types';
 import { decorate, Classes } from './PageHeader.styles';
 

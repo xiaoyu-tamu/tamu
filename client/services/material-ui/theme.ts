@@ -36,4 +36,7 @@ export const theme = createMuiTheme({
       minHeight: 48,
     },
   },
+  shape: {
+    borderRadius: 8,
+  },
 });

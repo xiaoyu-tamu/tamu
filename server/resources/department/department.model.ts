@@ -1,4 +1,4 @@
-import * as mongoose from 'mongoose';
+import mongoose from 'mongoose';
 import { Department } from '../../../shared/types/models';
 
 const departmentSchema = new mongoose.Schema({

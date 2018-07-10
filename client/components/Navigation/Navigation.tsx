@@ -1,36 +1,38 @@
-import * as React from 'react';
+import React from 'react';
 import { List } from '@material-ui/core';
 import { StandardProps } from 'types';
 import { decorate, Classes } from './Navigation.styles';
-import { Page } from '../../services/pages';
+import { Route } from '../../services/routes';
 import NavigationItem from './NavigationItem';
-import { pageToTitle } from '../../services/utils/helper';
+import { routeToTitle } from '../../services/utils/helper';
 
 export interface Props extends StandardProps {
-  pages: Page[];
-  activePage: Page;
+  routes: Route[];
+  activeRoute?: Route;
 }
 
 type P = Readonly<Props> & Classes;
 
 // --------------------------------------------------
 
-const Navigation: React.SFC<P> = ({ className, classes, pages, activePage, ...rest }) => (
-  <div className={classes.root}>{renderNavItems({ pages, activePage, depth: 0, props: rest })}</div>
+const Navigation: React.SFC<P> = ({ className, classes, routes, activeRoute, ...rest }) => (
+  <div className={classes.root}>
+    {renderNavItems({ routes, activeRoute, depth: 0, props: rest })}
+  </div>
 );
 function renderNavItems({
-  pages,
+  routes,
   ...rest
 }: {
-  pages: Page[];
+  routes: Route[];
   depth: number;
-  activePage: Page;
+  activeRoute?: Route;
   props: any;
 }) {
   return (
     <List>
-      {pages.reduce(
-        (routes, page) => reduceChildRoutes({ routes, page, ...rest }),
+      {routes.reduce(
+        (routes, Route) => reduceChildRoutes({ routes, Route, ...rest }),
         [] as React.ReactNodeArray
       )}
     </List>
@@ -39,30 +41,30 @@ function renderNavItems({
 
 function reduceChildRoutes({
   props,
-  page,
-  activePage,
+  Route,
+  activeRoute,
   routes,
   depth,
 }: {
   routes: React.ReactNodeArray;
-  page: Page;
+  Route: Route;
   depth: number;
   props: any;
-  activePage: Page;
+  activeRoute?: Route;
 }) {
-  const title = pageToTitle(page);
+  const title = routeToTitle(Route);
 
-  if (page.children && page.children.length) {
-    const forceOpen = activePage.pathname.indexOf(page.pathname) === 0;
+  if (Route.children && Route.children.length) {
+    const forceOpen = activeRoute && activeRoute.pathname.indexOf(Route.pathname) === 0;
     routes.push(
       <NavigationItem
-        details={page.children.map(pageToTitle).join(', ')}
+        details={Route.children.map(routeToTitle).join(', ')}
         depth={depth}
         key={title}
         forceOpen={forceOpen}
         title={title}
       >
-        {renderNavItems({ props, pages: page.children, activePage, depth: depth + 1 })}
+        {renderNavItems({ props, routes: Route.children, activeRoute, depth: depth + 1 })}
       </NavigationItem>
     );
   } else {
@@ -71,7 +73,7 @@ function reduceChildRoutes({
         depth={depth}
         key={title}
         title={title}
-        href={page.pathname}
+        href={Route.pathname}
         onClick={props.onClose}
       />
     );

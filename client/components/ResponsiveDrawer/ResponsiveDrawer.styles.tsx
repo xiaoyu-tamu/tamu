@@ -1,13 +1,7 @@
 import { Theme, createStyles, WithStyles, withStyles } from '@material-ui/core';
 
-export const styles = ({ breakpoints, spacing, palette }: Theme) =>
+export const styles = ({ spacing, palette }: Theme) =>
   createStyles({
-    root: {
-      [breakpoints.up('md')]: {
-        flex: `0 0 ${spacing.sider}px`,
-      },
-    },
-
     paper: {
       width: spacing.sider,
       borderRight: 0,
@@ -17,17 +11,6 @@ export const styles = ({ breakpoints, spacing, palette }: Theme) =>
       width: spacing.sider,
       borderRight: 0,
       height: '100%',
-    },
-    toolbar: {
-      boxShadow: `inset 0 -1px 0 ${palette.divider}`,
-    },
-    logo: {
-      maxHeight: 48,
-    },
-
-    brand: {
-      fontWeight: 400,
-      marginLeft: 8,
     },
 
     dashboard: {

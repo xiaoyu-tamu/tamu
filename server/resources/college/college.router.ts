@@ -1,4 +1,4 @@
-import * as express from 'express';
+import express from 'express';
 import collegeController from './college.controller';
 
 const collegeRouter = express.Router();

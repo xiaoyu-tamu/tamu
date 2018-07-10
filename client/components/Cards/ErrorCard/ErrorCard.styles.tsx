@@ -9,7 +9,6 @@ export const styles = ({ breakpoints, mixins }: Theme) =>
     }),
 
     card: {
-      borderRadius: 8,
       margin: '0 auto',
       maxWidth: 936,
       [breakpoints.down('sm')]: {

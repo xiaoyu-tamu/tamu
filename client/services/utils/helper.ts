@@ -1,15 +1,16 @@
-import { Page } from '../pages';
+import { Route } from '../routes';
+import { ImageType } from './constants';
 
 export const isBrowser = typeof window !== 'undefined';
 export const isServer = !isBrowser;
 export const isIOS = isBrowser && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
-export function pageToTitle(page: Page) {
-  if (page.title) {
-    return page.title;
+export function routeToTitle(route: Route) {
+  if (route.title) {
+    return route.title;
   }
   // remove leading slash
-  const name = page.pathname.replace(/.*\//, '');
+  const name = route.pathname.replace(/.*\//, '');
   return titleize(name);
 }
 
@@ -18,4 +19,15 @@ export function titleize(str: string) {
     .split('-')
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ');
+}
+
+export function getImage(image: ImageType) {
+  const DIR = 'static/images';
+  switch (image) {
+    case ImageType.Error:
+      return { alt: 'Error', src: [DIR, 'empty-state.png'].join('/') };
+    default: {
+      return { alt: 'Error', src: [DIR, 'some-default-image.png'].join('/') };
+    }
+  }
 }
