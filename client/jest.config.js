@@ -4,6 +4,6 @@ module.exports = {
   transform: { '^.+\\.tsx?$': 'ts-jest' },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   testPathIgnorePatterns: ['/.next/'],
-  setupFiles: ['./services/test/jest.setup.ts'],
+  setupFiles: ['<rootDir>/services/test/jest.setup.ts'],
   globals: { 'ts-jest': { tsConfigFile: '../tsconfig.test.json' } },
 };

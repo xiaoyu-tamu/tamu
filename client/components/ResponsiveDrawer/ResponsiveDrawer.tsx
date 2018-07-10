@@ -1,8 +1,8 @@
 import React from 'react';
 import { SwipeableDrawer, Drawer, Hidden } from '@material-ui/core';
 import { StandardProps } from 'types';
+import { isIOS } from 'services/utils';
 import { decorate, Classes } from './ResponsiveDrawer.styles';
-import { isIOS } from '../../services/utils/helper';
 
 export interface Props extends StandardProps {
   open: boolean;

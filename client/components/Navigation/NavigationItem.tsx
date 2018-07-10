@@ -1,11 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
+import autobind from 'autobind-decorator';
 import { ListItem, Button, Collapse } from '@material-ui/core';
 import { StandardProps } from 'types';
+import { Link } from 'components/Link';
+import { getProps } from 'services/utils';
 import { decorate, Classes } from './NavigationItem.styles';
-import { getProps } from '../../services/utils/react';
-import Link from '../Link/Link';
-import autobind from 'autobind-decorator';
 
 export interface Props extends StandardProps<DP> {
   depth: number;

@@ -1,10 +1,10 @@
 import React from 'react';
 import { List } from '@material-ui/core';
 import { StandardProps } from 'types';
-import { decorate, Classes } from './Navigation.styles';
-import { Route } from '../../services/routes';
+import { Route } from 'services/routes';
+import { routeToTitle } from 'services/utils/helper';
 import NavigationItem from './NavigationItem';
-import { routeToTitle } from '../../services/utils/helper';
+import { decorate, Classes } from './Navigation.styles';
 
 export interface Props extends StandardProps {
   routes: Route[];

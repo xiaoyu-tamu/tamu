@@ -1,6 +1,6 @@
 import React from 'react';
-import { IconButton, Icon, Typography, Toolbar } from '@material-ui/core';
 import classnames from 'classnames';
+import { IconButton, Icon, Typography, Toolbar } from '@material-ui/core';
 import { StandardProps } from 'types';
 import { decorate, Classes } from './PageHeader.styles';
 
@@ -13,7 +13,7 @@ type P = Readonly<Props> & Classes;
 
 // --------------------------------------------------
 
-export const PageHeader: React.SFC<P> = ({ classes, className, title, children, actions }) => {
+const PageHeader: React.SFC<P> = ({ classes, className, title, children, actions }) => {
   const root = classnames(classes.root, className);
 
   return (

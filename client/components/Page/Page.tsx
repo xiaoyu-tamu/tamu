@@ -1,13 +1,13 @@
 import React from 'react';
 import { AppBar, Toolbar } from '@material-ui/core';
 import { StandardProps } from 'types';
+import { Route } from 'services/routes';
+import { SiderToggler } from 'components/Togglers';
+import { ResponsiveDrawer } from 'components/ResponsiveDrawer';
+import { Navigation } from 'components/Navigation';
+import { Brand } from 'components/Brand';
+import { UserPanel } from 'containers/UserPanel';
 import { decorate, Classes } from './Page.styles';
-import { SiderToggler } from '../Togglers';
-import { Brand } from '../Brand';
-import { ResponsiveDrawer } from '../ResponsiveDrawer';
-import { Navigation } from '../Navigation';
-import { Route } from '../../services/routes';
-import UserPanel from '../../containers/UserPanel/UserPanel';
 
 export interface Props extends StandardProps {
   isSiderOpen: boolean;

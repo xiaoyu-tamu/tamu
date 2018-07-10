@@ -1,11 +1,11 @@
 import React from 'react';
+import classnames from 'classnames';
 import { withRouter, WithRouterProps } from 'next/router';
 import NextLink, { LinkState } from 'next/link';
-import classnames from 'classnames';
 import { StandardProps, BaseVariant } from 'types';
-import { decorate, Classes } from './Link.styles';
-import { getProps } from '../../services/utils/react';
+import { getProps } from 'services/utils/react';
 import { Omit } from '@material-ui/core';
+import { decorate, Classes } from './Link.style';
 
 export interface Props extends StandardProps<DP>, Omit<LinkState, 'children'> {
   onClick?: (event: React.MouseEvent<HTMLElement>) => void;

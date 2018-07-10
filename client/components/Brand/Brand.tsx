@@ -1,11 +1,10 @@
 import React from 'react';
-import {} from '@material-ui/core';
 import classnames from 'classnames';
-import { StandardProps } from 'types';
-import { decorate, Classes } from './Brand.styles';
 import { Toolbar, Typography } from '@material-ui/core';
-import { getProps } from '../../services/utils/react';
-import { Link } from '../Link';
+import { StandardProps } from 'types';
+import { getProps } from 'services/utils/react';
+import { Link } from 'components/Link';
+import { decorate, Classes } from './Brand.style';
 
 export interface Props extends StandardProps<DP> {}
 

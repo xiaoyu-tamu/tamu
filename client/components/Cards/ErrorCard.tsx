@@ -1,12 +1,12 @@
 import React from 'react';
-import { Card, Typography, CardContent } from '@material-ui/core';
 import classnames from 'classnames';
+import { Card, Typography, CardContent } from '@material-ui/core';
 import { StandardProps } from 'types';
+import { getImage } from 'services/utils/helper';
+import { getProps } from 'services/utils/react';
+import { ImageType } from 'services/utils/constants';
+import { Link } from 'components/Link';
 import { decorate, Classes } from './ErrorCard.styles';
-import { Link } from '../../Link';
-import { getImage } from '../../../services/utils/helper';
-import { getProps } from '../../../services/utils/react';
-import { ImageType } from '../../../services/utils/constants';
 
 export interface Props extends StandardProps<DP> {
   description: string;
@@ -23,7 +23,7 @@ const defaultProps = {
   linkText: 'Back To Home',
 };
 
-export const ErrorCard: React.SFC<P> = (props) => {
+const ErrorCard: React.SFC<P> = (props) => {
   const {
     classes,
     className,

@@ -3,12 +3,12 @@ import {} from '@material-ui/core';
 import { find } from 'lodash';
 import { StandardProps } from 'types';
 import { withRouter, WithRouterProps, RouterProps } from 'next/router';
-import { Page, PageHeader } from '../../components/Page';
-
 import autobind from 'autobind-decorator';
-import { ErrorCard, ErrorCardProps } from '../../components/Cards';
-import { Route, routes } from '../../services/routes';
-import { routeToTitle } from '../../services/utils/helper';
+
+import { routeToTitle } from 'services/utils/helper';
+import { Route, routes } from 'services/routes';
+import { ErrorCard, ErrorCardProps } from 'components/Cards';
+import { PageHeader, Page } from 'components/Page';
 
 export interface Props extends StandardProps {
   metadata: Metadata;

@@ -41,6 +41,7 @@
     "@types/typescript": "^2.0.0",
     "@zeit/next-typescript": "1.1.0",
     "babel-loader": "^8.0.0-beta.4",
+    "babel-plugin-module-resolver": "^3.1.1",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "jest": "^23.3.0",
@@ -49,7 +50,7 @@
     "ts-jest": "^23.0.0",
     "tslint": "^5.10.0",
     "tslint-react": "^3.6.0",
-    "typescript": "^3.0.0-dev.20180707"
+    "typescript": "^3.0.0-dev.20180710"
   },
   "nodemonConfig": {
     "watch": [

@@ -1,8 +1,8 @@
 import React from 'react';
+import autobind from 'autobind-decorator';
 import { AppBar, Tabs, Tab, Toolbar } from '@material-ui/core';
 import { StandardProps } from 'types';
 import { decorate, Classes } from './PageContent.styles';
-import autobind from 'autobind-decorator';
 
 export interface Props extends StandardProps {
   labels: string[];
