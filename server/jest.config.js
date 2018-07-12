@@ -6,6 +6,6 @@ module.exports = {
   moduleFileExtensions: ['ts', 'js'],
   testPathIgnorePatterns: ['/.next/'],
 
-  setupFiles: ['./services/test/jest.setup.js'],
+  setupFiles: ['<rootDir>/services/test/jest.setup.js'],
   globals: { 'ts-jest': { tsConfigFile: '../tsconfig.test.json' } },
 };

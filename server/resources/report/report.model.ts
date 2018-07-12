@@ -1,4 +1,4 @@
-import * as mongoose from 'mongoose';
+import mongoose from 'mongoose';
 import { Report } from '../../../shared/types/models';
 
 const reportSchema = new mongoose.Schema({

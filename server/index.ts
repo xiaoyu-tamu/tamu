@@ -1,4 +1,4 @@
-import * as next from 'next';
+import next from 'next';
 import server from './server';
 
 // register req.docFromId in Express.Request type definition

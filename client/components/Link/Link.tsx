@@ -1,17 +1,18 @@
-import * as React from 'react';
+import React from 'react';
+import classnames from 'classnames';
+import { Omit } from '@material-ui/core';
+import { Theme, createStyles, WithStyles, withStyles } from '@material-ui/core/styles';
+
 import { withRouter, WithRouterProps } from 'next/router';
 import NextLink, { LinkState } from 'next/link';
-import * as classnames from 'classnames';
 import { StandardProps, BaseVariant } from 'types';
-import { decorate, Classes } from './Link.styles';
-import { getProps } from '../../services/utils/react';
-import { Omit } from '@material-ui/core';
+import { getProps } from 'services/utils/react';
 
 export interface Props extends StandardProps<DP>, Omit<LinkState, 'children'> {
   onClick?: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
-type P = Props & Classes & WithRouterProps;
+type P = Props & WithStyles<typeof styles> & WithRouterProps;
 type DP = Readonly<typeof defaultProps>;
 type Variant = BaseVariant | 'button';
 
@@ -19,6 +20,8 @@ const defaultProps = {
   variant: 'default' as Variant,
   activeClassName: 'active',
 };
+
+// --------------------------------------------------
 
 const Link: React.SFC<P> = (props) => {
   const {
@@ -47,4 +50,30 @@ const Link: React.SFC<P> = (props) => {
   );
 };
 
-export default decorate(withRouter(Link));
+// --------------------------------------------------
+
+const styles = ({ palette }: Theme) =>
+  createStyles({
+    root: {
+      textDecoration: 'none',
+      '&:hover': {
+        textDecoration: 'underline',
+      },
+    },
+    default: {
+      color: 'inherit',
+    },
+    primary: {
+      color: palette.primary.main,
+    },
+    secondary: {
+      color: palette.secondary.main,
+    },
+    button: {
+      '&:hover': {
+        textDecoration: 'inherit',
+      },
+    },
+  });
+
+export default withStyles(styles)(withRouter(Link));

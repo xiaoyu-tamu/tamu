@@ -1,4 +1,4 @@
-import * as express from 'express';
+import express from 'express';
 import courseRouter from './course/course.router';
 import collegeRouter from './college/college.router';
 import departmentRouter from './department/department.router';

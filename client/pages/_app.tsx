@@ -1,8 +1,8 @@
-import * as React from 'react';
+import React from 'react';
 import App, { Container, AppComponentProps } from 'next/app';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import JssProvider from 'react-jss/lib/JssProvider';
-import getPageContext from '../services/material-ui/pageContext';
+import getPageContext from 'services/material-ui/pageContext';
 
 class MyApp extends App {
   private pageContext: any = null;

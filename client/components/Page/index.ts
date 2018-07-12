@@ -1,4 +1,5 @@
 export { default as Page, Props as PageProps } from './Page';
-export { default as PageHeader, Props as PageHeaderProps } from './PageHeader';
-export { default as PageEmpty, Props as PageEmptyProps } from './PageEmpty';
+export { default as PageHeading, Props as PageHeadingProps } from './PageHeading';
 export { default as PageContent, Props as PageContentProps } from './PageContent';
+export { default as PageBanner, Props as PageBannerProps } from './PageBanner';
+export { default as PageGrid, Props as PageGridProps } from './PageGrid';

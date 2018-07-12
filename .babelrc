@@ -13,5 +13,18 @@
       ]
     }
   },
-  "plugins": [["@babel/plugin-proposal-decorators", { "legacy": true }]]
+  "plugins": [
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "components": "./client/components",
+          "containers": "./client/containers",
+          "pages": "./client/pages",
+          "services": "./client/services"
+        }
+      }
+    ]
+  ]
 }

@@ -1,11 +1,12 @@
-import * as React from 'react';
-import * as classNames from 'classnames';
-import { ListItem, Button, Collapse } from '@material-ui/core';
-import { StandardProps } from 'types';
-import { decorate, Classes } from './NavigationItem.styles';
-import { getProps } from '../../services/utils/react';
-import Link from '../Link/Link';
+import React from 'react';
+import classNames from 'classnames';
 import autobind from 'autobind-decorator';
+import { ListItem, Button, Collapse } from '@material-ui/core';
+import { Theme, createStyles, WithStyles, withStyles } from '@material-ui/core';
+
+import { StandardProps } from 'types';
+import { Link } from 'components/Link';
+import { getProps } from 'services/utils';
 
 export interface Props extends StandardProps<DP> {
   depth: number;
@@ -16,7 +17,7 @@ export interface Props extends StandardProps<DP> {
 }
 
 type DP = typeof defaultProps;
-type P = Readonly<Props> & Classes;
+type P = Readonly<Props> & WithStyles<typeof styles>;
 type S = Readonly<{ open: boolean }>;
 
 const defaultProps = {
@@ -100,4 +101,57 @@ class NavigationItem extends React.Component<P, S> {
   }
 }
 
-export default decorate(NavigationItem);
+// --------------------------------------------------
+
+const styles = ({ typography, palette }: Theme) =>
+  createStyles({
+    root: {},
+    active: {
+      color: palette.primary.main,
+      fontWeight: typography.fontWeightMedium,
+    },
+
+    item: {
+      display: 'block',
+      paddingTop: 0,
+      paddingBottom: 0,
+    },
+
+    itemChild: {
+      display: 'flex',
+      paddingTop: 0,
+      paddingBottom: 0,
+    },
+
+    button: {
+      justifyContent: 'flex-start',
+      textTransform: 'none',
+      width: '100%',
+      padding: '16px 0',
+      fontWeight: typography.fontWeightRegular,
+    },
+
+    buttonLabel: {
+      flexDirection: 'column',
+      alignItems: 'start',
+    },
+
+    title: {
+      fontWeight: typography.fontWeightMedium,
+    },
+    details: {
+      paddingTop: 8,
+      ...typography.caption,
+    },
+    buttonChild: {
+      justifyContent: 'flex-start',
+      textTransform: 'none',
+      width: '100%',
+      fontWeight: typography.fontWeightRegular,
+      '&.depth-0': {
+        fontWeight: typography.fontWeightMedium,
+      },
+    },
+  });
+
+export default withStyles(styles)(NavigationItem);
