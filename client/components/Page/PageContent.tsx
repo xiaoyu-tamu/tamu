@@ -1,14 +1,15 @@
 import React from 'react';
 import autobind from 'autobind-decorator';
 import { AppBar, Tabs, Tab, Toolbar } from '@material-ui/core';
+import { Theme, createStyles, WithStyles, withStyles } from '@material-ui/core';
+
 import { StandardProps } from 'types';
-import { decorate, Classes } from './PageContent.styles';
 
 export interface Props extends StandardProps {
   labels: string[];
 }
 
-type P = Readonly<Props> & Classes;
+type P = Readonly<Props> & WithStyles<typeof styles>;
 type S = Readonly<typeof initialState>;
 
 const initialState = {
@@ -68,4 +69,34 @@ class PageContent extends React.Component<P, S> {
   }
 }
 
-export default decorate(PageContent);
+const styles = ({ typography }: Theme) =>
+  createStyles({
+    root: {},
+
+    tabRoot: {
+      textTransform: 'capitalize',
+      textAlign: 'left',
+      minWidth: 'unset',
+      fontWeight: typography.fontWeightRegular,
+      marginRight: 16,
+    },
+
+    tabSelected: {
+      fontWeight: typography.fontWeightMedium,
+    },
+
+    tabIndicator: {
+      backgroundColor: '#fff',
+      borderRadius: '3px 3px 0 0',
+      backgroundClip: 'content-box',
+      height: 3,
+    },
+
+    tabLabelContainer: {
+      // make indicator wider then actual text
+      paddingLeft: 4,
+      paddingRight: 4,
+    },
+  });
+
+export default withStyles(styles)(PageContent);

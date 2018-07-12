@@ -13,6 +13,15 @@ declare module '@material-ui/core/styles/spacing' {
   export interface Spacing {
     negativeIconButton: number | string;
     sider: number;
+    page: number;
+  }
+}
+
+declare module '@material-ui/core/styles/' {
+  export interface Spacing {
+    negativeIconButton: number | string;
+    sider: number;
+    page: number;
   }
 }
 
@@ -28,7 +37,7 @@ export const theme = createMuiTheme({
   },
   spacing: {
     sider: 256,
-
+    page: 960,
     negativeIconButton: '-14px',
   },
   mixins: {

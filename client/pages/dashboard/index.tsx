@@ -1,23 +1,25 @@
 import React from 'react';
-import Root, { Metadata } from '../../containers/Root';
+import Root, { Metadata } from 'containers/Root/Root';
 import { Button } from '@material-ui/core';
+import { ImageType } from 'services/utils/constants';
 
 const extraEmptyState = (
-  <Button variant="raised" color="primary">
-    yes
+  <Button variant="raised" color="primary" href="/">
+    See you soon
   </Button>
 );
 
 const metadata: Metadata = {
   isEmpty: true,
-  onPageEmpty: {
-    linkHref: '/dashboard',
-    linkText: 'Learn More',
-    imageSrc: '/static/images/empty-state.png',
-    imageAlt: 'empty-state',
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-    caption: 'additional infomation',
+  isError: false,
+  onEmpty: {
+    imageType: ImageType.Error,
+    description: 'This Page is Currently In Development',
+    children: extraEmptyState,
+  },
+  onError: {
+    imageType: ImageType.Error,
+    description: 'Something wrong, This is the default Error Message',
     children: extraEmptyState,
   },
 };

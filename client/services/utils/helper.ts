@@ -22,10 +22,15 @@ export function titleize(str: string) {
 }
 
 export function getImage(image: ImageType) {
-  const DIR = 'static/images';
+  const DIR = '/static/images';
   switch (image) {
     case ImageType.Error:
       return { alt: 'Error', src: [DIR, 'empty-state.png'].join('/') };
+    case ImageType.Maintenance:
+      return { alt: 'Maintenance', src: [DIR, 'maintenance.png'].join('/') };
+    case ImageType.Logo:
+      return { alt: 'Logo', src: [DIR, 'logo.png'].join('/') };
+
     default: {
       return { alt: 'Error', src: [DIR, 'some-default-image.png'].join('/') };
     }

@@ -1,15 +1,16 @@
 import React from 'react';
 import { SwipeableDrawer, Drawer, Hidden } from '@material-ui/core';
+import { Theme, createStyles, WithStyles, withStyles } from '@material-ui/core';
+
 import { StandardProps } from 'types';
 import { isIOS } from 'services/utils';
-import { decorate, Classes } from './ResponsiveDrawer.styles';
 
 export interface Props extends StandardProps {
   open: boolean;
   onToggle: () => void;
 }
 
-type P = Readonly<Props> & Classes;
+type P = Readonly<Props> & WithStyles<typeof styles>;
 
 // --------------------------------------------------
 
@@ -41,4 +42,29 @@ const Sider: React.SFC<P> = ({ classes, children, open, onToggle }) => (
   </>
 );
 
-export default decorate(Sider);
+// --------------------------------------------------
+
+const styles = ({ spacing, palette }: Theme) =>
+  createStyles({
+    paper: {
+      width: spacing.sider,
+      borderRight: 0,
+    },
+
+    permanentPaper: {
+      width: spacing.sider,
+      borderRight: 0,
+      height: '100%',
+    },
+
+    dashboard: {
+      display: 'flex',
+      boxShadow: `inset 0 -1px 0 ${palette.divider}`,
+    },
+
+    leftIcon: {
+      marginRight: 16,
+    },
+  });
+
+export default withStyles(styles)(Sider);

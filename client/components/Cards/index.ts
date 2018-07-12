@@ -1,1 +1,2 @@
-export { default as ErrorCard, Props as ErrorCardProps } from './ErrorCard';
+export { default as CardError, Props as CardErrorProps } from './CardError';
+export { default as CardFeature, Props as CardFeatureProps } from './CardFeature';

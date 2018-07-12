@@ -22,6 +22,14 @@ export const styles = ({ palette, breakpoints, spacing, transitions }: Theme) =>
         position: 'absolute',
       },
     },
+
+    userPanel: {
+      marginLeft: 'auto',
+      height: 36,
+      width: 36,
+      marginRight: -4,
+    },
+
     sider: {
       [breakpoints.up('md')]: {
         flex: `0 0 ${spacing.sider}px`,
@@ -33,12 +41,6 @@ export const styles = ({ palette, breakpoints, spacing, transitions }: Theme) =>
         display: 'none',
       },
       marginLeft: spacing.negativeIconButton,
-    },
-    userPanel: {
-      marginLeft: 'auto',
-      height: 36,
-      width: 36,
-      marginRight: -4,
     },
 
     '@global': {

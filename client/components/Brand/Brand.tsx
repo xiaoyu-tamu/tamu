@@ -1,22 +1,23 @@
 import React from 'react';
 import classnames from 'classnames';
 import { Toolbar, Typography } from '@material-ui/core';
+import { Theme, createStyles, WithStyles, withStyles } from '@material-ui/core/styles';
 import { StandardProps } from 'types';
 import { getProps } from 'services/utils/react';
 import { Link } from 'components/Link';
-import { decorate, Classes } from './Brand.style';
+import { getImage, ImageType } from 'services/utils';
 
 export interface Props extends StandardProps<DP> {}
 
-type P = Readonly<Props> & Classes;
+type P = Readonly<Props> & WithStyles<typeof styles>;
 type DP = typeof defaultProps;
+
 // --------------------------------------------------
 
 const defaultProps = {
   title: 'Aggies Portal',
   image: {
-    src: 'static/images/logo.png',
-    alt: 'Aggies Portal Logo',
+    ...getImage(ImageType.Logo),
   },
 };
 
@@ -35,4 +36,21 @@ const Brand: React.SFC<P> = (props) => {
   );
 };
 
-export default decorate(Brand);
+// --------------------------------------------------
+
+const styles = ({ palette }: Theme) =>
+  createStyles({
+    root: {
+      boxShadow: `inset 0 -1px 0 ${palette.divider}`,
+    },
+    logo: {
+      maxHeight: 48,
+    },
+
+    title: {
+      fontWeight: 400,
+      marginLeft: 8,
+    },
+  });
+
+export default withStyles(styles)(Brand);

@@ -7,8 +7,7 @@ import { ResponsiveDrawer } from 'components/ResponsiveDrawer';
 import { Navigation } from 'components/Navigation';
 import { Brand } from 'components/Brand';
 import { UserPanel } from 'containers/UserPanel';
-import { decorate, Classes } from './Page.styles';
-
+import { decorate, Classes } from './Page.style';
 export interface Props extends StandardProps {
   isSiderOpen: boolean;
   toggleSider: () => void;

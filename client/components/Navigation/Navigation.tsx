@@ -1,17 +1,18 @@
 import React from 'react';
 import { List } from '@material-ui/core';
+import { Theme, createStyles, WithStyles, withStyles } from '@material-ui/core';
+
 import { StandardProps } from 'types';
 import { Route } from 'services/routes';
 import { routeToTitle } from 'services/utils/helper';
 import NavigationItem from './NavigationItem';
-import { decorate, Classes } from './Navigation.styles';
 
 export interface Props extends StandardProps {
   routes: Route[];
   activeRoute?: Route;
 }
 
-type P = Readonly<Props> & Classes;
+type P = Readonly<Props> & WithStyles<typeof styles>;
 
 // --------------------------------------------------
 
@@ -82,4 +83,12 @@ function reduceChildRoutes({
   return routes;
 }
 
-export default decorate(Navigation);
+// --------------------------------------------------
+
+const styles = ({  }: Theme) =>
+  createStyles({
+    root: {
+      overflowY: 'auto',
+    },
+  });
+export default withStyles(styles)(Navigation);
